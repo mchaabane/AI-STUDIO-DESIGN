@@ -208,7 +208,7 @@ ollama --version
 
 ## 2. Installer le backend
 
-### Dossier : `/Users/chaabane/design-ai-mvp`
+### Dossier : `/Users/XXXXX/design-ai-mvp`
 
 Créer l'environnement virtuel :
 
@@ -250,7 +250,7 @@ python -c "import fastapi, httpx, pydantic; print('Backend OK')"
 
 # 💻 Installation du frontend
 
-### Dossier : `/Users/chaabane/design-ai-mvp/frontend`
+### Dossier : `/Users/XXXXX/design-ai-mvp/frontend`
 
 ``` bash
 npm install
@@ -326,7 +326,7 @@ générations.
 
 # 🔍 Analyser les références
 
-### Dossier : `/Users/chaabane/design-ai-mvp`
+### Dossier : `/Users/XXXXX/design-ai-mvp`
 
 Activer l'environnement :
 
@@ -356,7 +356,7 @@ python3 -c "from backend.app.generator import load_design_profile, build_design_
 
 # ✅ Vérifier le backend
 
-### Dossier : `/Users/chaabane/design-ai-mvp`
+### Dossier : `/Users/XXXXX/design-ai-mvp`
 
 ``` bash
 python3 -m py_compile backend/app/main.py
@@ -390,7 +390,7 @@ ollama serve
 
 ## Terminal 2 --- Backend
 
-### Dossier : `/Users/chaabane/design-ai-mvp`
+### Dossier : `/Users/XXXXX/design-ai-mvp`
 
 ``` bash
 source .venv/bin/activate
@@ -409,7 +409,7 @@ Documentation API :
 
 ## Terminal 3 --- Frontend
 
-### Dossier : `/Users/chaabane/design-ai-mvp/frontend`
+### Dossier : `/Users/XXXXX/design-ai-mvp/frontend`
 
 ``` bash
 npm run dev
@@ -514,7 +514,7 @@ Cela permet de conserver l'historique des générations et modifications.
 
 Après avoir ajouté de nouvelles références :
 
-### Dossier : `/Users/chaabane/design-ai-mvp`
+### Dossier : `/Users/XXXXX/design-ai-mvp`
 
 ``` bash
 source .venv/bin/activate
@@ -537,7 +537,7 @@ Les prochaines générations utiliseront le profil actualisé.
 
 Vérifier que FastAPI fonctionne.
 
-**Dossier : `/Users/chaabane/design-ai-mvp`**
+**Dossier : `/Users/XXXXX/design-ai-mvp`**
 
 ``` bash
 source .venv/bin/activate
@@ -572,7 +572,7 @@ ollama serve
 
 Vérifier que l'environnement virtuel est actif :
 
-**Dossier : `/Users/chaabane/design-ai-mvp`**
+**Dossier : `/Users/XXXXX/design-ai-mvp`**
 
 ``` bash
 source .venv/bin/activate
@@ -628,7 +628,7 @@ ollama serve
 
 ### Terminal 2
 
-**Dossier : `/Users/chaabane/design-ai-mvp`**
+**Dossier : `/Users/XXXXX/design-ai-mvp`**
 
 ``` bash
 source .venv/bin/activate
@@ -637,7 +637,7 @@ uvicorn backend.app.main:app --reload
 
 ### Terminal 3
 
-**Dossier : `/Users/chaabane/design-ai-mvp/frontend`**
+**Dossier : `/Users/XXXXX/design-ai-mvp/frontend`**
 
 ``` bash
 npm run dev
