@@ -1,0 +1,943 @@
+{
+  "profile_version": 1,
+  "colors": {
+    "primary": [
+      {
+        "color": "#FFFFFF",
+        "family": "white",
+        "project_count": 7,
+        "projects_total": 7,
+        "average_weight": 43.67
+      },
+      {
+        "color": "#DFE5E5",
+        "family": "light-gray",
+        "project_count": 5,
+        "projects_total": 7,
+        "average_weight": 4.55
+      },
+      {
+        "color": "#12176E",
+        "family": "blue",
+        "project_count": 3,
+        "projects_total": 7,
+        "average_weight": 7.64
+      },
+      {
+        "color": "#F9C5C0",
+        "family": "warm-light",
+        "project_count": 3,
+        "projects_total": 7,
+        "average_weight": 4.55
+      },
+      {
+        "color": "#181818",
+        "family": "black",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 20.73
+      },
+      {
+        "color": "#00BBFF",
+        "family": "blue",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 10.5
+      },
+      {
+        "color": "#04E096",
+        "family": "green",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 9.44
+      },
+      {
+        "color": "#D84925",
+        "family": "red-pink",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 6.52
+      },
+      {
+        "color": "#010101",
+        "family": "black",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 5.96
+      },
+      {
+        "color": "#91CBBF",
+        "family": "green",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 5.0
+      },
+      {
+        "color": "#4B4E8A",
+        "family": "blue",
+        "project_count": 2,
+        "projects_total": 7,
+        "average_weight": 0.44
+      },
+      {
+        "color": "#ACA8A2",
+        "family": "gray",
+        "project_count": 1,
+        "projects_total": 7,
+        "average_weight": 27.3
+      }
+    ],
+    "secondary": [],
+    "accent": [],
+    "background": [],
+    "surface": [],
+    "text": [],
+    "muted_text": [],
+    "border": [],
+    "success": [],
+    "warning": [],
+    "error": []
+  },
+  "typography": {
+    "font_families": [],
+    "heading_sizes": [],
+    "body_sizes": [],
+    "font_weights": [],
+    "line_heights": []
+  },
+  "spacing": {
+    "values": [],
+    "section_spacing": [],
+    "component_spacing": [],
+    "content_padding": []
+  },
+  "shape": {
+    "border_radius": [],
+    "border_widths": []
+  },
+  "effects": {
+    "shadows": [],
+    "opacity_values": [],
+    "blur_values": []
+  },
+  "layout": {
+    "max_widths": [],
+    "grid_columns": [],
+    "gaps": [],
+    "alignment_patterns": []
+  },
+  "components": {
+    "buttons": [],
+    "cards": [],
+    "navigation": [],
+    "hero": [],
+    "forms": [],
+    "modals": [],
+    "other": []
+  },
+  "style_patterns": {
+    "visual_density": [],
+    "design_patterns": [],
+    "interaction_patterns": []
+  },
+  "preferences": {
+    "preferred_colors": [],
+    "avoided_colors": [],
+    "preferred_fonts": [],
+    "preferred_shapes": [],
+    "preferred_layouts": []
+  },
+  "projects_analyzed": [
+    {
+      "file": "projets/projet001/Capture d’écran 2026-10-01 à 23.40.44.png",
+      "width": 1342,
+      "height": 658,
+      "aspect_ratio": 2.04,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#FFFFFF",
+          "family": "white",
+          "percentage": 55.69,
+          "variations": 287
+        },
+        {
+          "color": "#010101",
+          "family": "black",
+          "percentage": 6.83,
+          "variations": 26
+        },
+        {
+          "color": "#00BBFF",
+          "family": "blue",
+          "percentage": 6.62,
+          "variations": 213
+        },
+        {
+          "color": "#12176E",
+          "family": "blue",
+          "percentage": 8.05,
+          "variations": 920
+        },
+        {
+          "color": "#04E096",
+          "family": "green",
+          "percentage": 6.54,
+          "variations": 384
+        },
+        {
+          "color": "#DFE5E5",
+          "family": "light-gray",
+          "percentage": 1.81,
+          "variations": 419
+        },
+        {
+          "color": "#46DEAE",
+          "family": "green",
+          "percentage": 0.24,
+          "variations": 10
+        },
+        {
+          "color": "#13607E",
+          "family": "blue",
+          "percentage": 1.21,
+          "variations": 432
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 83.8,
+          "level": "very-high",
+          "average_brightness": 184.68,
+          "contrast": 100,
+          "color_diversity": 119
+        },
+        "edge_density": {
+          "score": 21.61,
+          "level": "low"
+        },
+        "brightness": {
+          "mode": "balanced",
+          "average_rgb": [
+            157.68,
+            192.84,
+            203.57
+          ],
+          "average_brightness": 184.7
+        },
+        "composition": {
+          "whitespace_ratio": 55.66,
+          "dark_area_ratio": 19.12,
+          "visual_center": {
+            "x": 0.443,
+            "y": 0.539
+          },
+          "horizontal_structure": 22.16,
+          "vertical_structure": 21.05,
+          "composition": "centered"
+        },
+        "color_balance": {
+          "warm_ratio": 0.0,
+          "cool_ratio": 35.0,
+          "neutral_ratio": 65.0,
+          "dominant_temperature": "cool"
+        },
+        "shape": {
+          "geometry": "soft-organic",
+          "corner_style": "mixed",
+          "rectangularity": 74.68,
+          "roundedness": 61.87,
+          "horizontal_edge_ratio": 37.55,
+          "vertical_edge_ratio": 27.39,
+          "diagonal_edge_ratio": 35.06
+        }
+      }
+    },
+    {
+      "file": "projets/projet001/Capture d’écran 2026-10-01 à 23.40.55.png",
+      "width": 1353,
+      "height": 325,
+      "aspect_ratio": 4.163,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#FFFFFF",
+          "family": "white",
+          "percentage": 34.82,
+          "variations": 191
+        },
+        {
+          "color": "#12176E",
+          "family": "blue",
+          "percentage": 14.5,
+          "variations": 87
+        },
+        {
+          "color": "#00BBFF",
+          "family": "blue",
+          "percentage": 14.38,
+          "variations": 60
+        },
+        {
+          "color": "#034EFF",
+          "family": "blue",
+          "percentage": 14.35,
+          "variations": 77
+        },
+        {
+          "color": "#04E096",
+          "family": "green",
+          "percentage": 12.34,
+          "variations": 89
+        },
+        {
+          "color": "#0945DB",
+          "family": "blue",
+          "percentage": 0.33,
+          "variations": 2
+        },
+        {
+          "color": "#05C6DF",
+          "family": "blue",
+          "percentage": 0.33,
+          "variations": 4
+        },
+        {
+          "color": "#4B4E8A",
+          "family": "blue",
+          "percentage": 0.66,
+          "variations": 75
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 72.6,
+          "level": "high",
+          "average_brightness": 164.79,
+          "contrast": 100,
+          "color_diversity": 63
+        },
+        "edge_density": {
+          "score": 12.62,
+          "level": "very-low"
+        },
+        "brightness": {
+          "mode": "balanced",
+          "average_rgb": [
+            106.19,
+            173.71,
+            214.79
+          ],
+          "average_brightness": 164.9
+        },
+        "composition": {
+          "whitespace_ratio": 34.62,
+          "dark_area_ratio": 15.13,
+          "visual_center": {
+            "x": 0.634,
+            "y": 0.493
+          },
+          "horizontal_structure": 10.93,
+          "vertical_structure": 14.33,
+          "composition": "asymmetric"
+        },
+        "color_balance": {
+          "warm_ratio": 0.0,
+          "cool_ratio": 61.23,
+          "neutral_ratio": 38.77,
+          "dominant_temperature": "cool"
+        },
+        "shape": {
+          "geometry": "rectangular",
+          "corner_style": "sharp",
+          "rectangularity": 89.03,
+          "roundedness": 31.61,
+          "horizontal_edge_ratio": 54.52,
+          "vertical_edge_ratio": 22.9,
+          "diagonal_edge_ratio": 22.58
+        }
+      }
+    },
+    {
+      "file": "projets/projet001/Capture d’écran 2026-10-01 à 23.41.09.png",
+      "width": 1361,
+      "height": 389,
+      "aspect_ratio": 3.499,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#181818",
+          "family": "black",
+          "percentage": 40.11,
+          "variations": 254
+        },
+        {
+          "color": "#E8E8E8",
+          "family": "light-gray",
+          "percentage": 12.38,
+          "variations": 180
+        },
+        {
+          "color": "#3500EF",
+          "family": "blue",
+          "percentage": 10.27,
+          "variations": 288
+        },
+        {
+          "color": "#EC6B20",
+          "family": "red-pink",
+          "percentage": 6.11,
+          "variations": 103
+        },
+        {
+          "color": "#FFFFFF",
+          "family": "white",
+          "percentage": 3.56,
+          "variations": 35
+        },
+        {
+          "color": "#D84925",
+          "family": "red-pink",
+          "percentage": 7.37,
+          "variations": 431
+        },
+        {
+          "color": "#F9C5C0",
+          "family": "warm-light",
+          "percentage": 3.0,
+          "variations": 91
+        },
+        {
+          "color": "#250D78",
+          "family": "blue",
+          "percentage": 0.38,
+          "variations": 35
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 95.4,
+          "level": "very-high",
+          "average_brightness": 100.4,
+          "contrast": 100,
+          "color_diversity": 177
+        },
+        "edge_density": {
+          "score": 17.8,
+          "level": "low"
+        },
+        "brightness": {
+          "mode": "dark",
+          "average_rgb": [
+            115.07,
+            83.81,
+            102.33
+          ],
+          "average_brightness": 100.4
+        },
+        "composition": {
+          "whitespace_ratio": 3.71,
+          "dark_area_ratio": 53.88,
+          "visual_center": {
+            "x": 0.508,
+            "y": 0.477
+          },
+          "horizontal_structure": 16.5,
+          "vertical_structure": 19.12,
+          "composition": "dense"
+        },
+        "color_balance": {
+          "warm_ratio": 26.28,
+          "cool_ratio": 15.03,
+          "neutral_ratio": 58.7,
+          "dominant_temperature": "warm"
+        },
+        "shape": {
+          "geometry": "rectangular",
+          "corner_style": "sharp",
+          "rectangularity": 93.3,
+          "roundedness": 26.42,
+          "horizontal_edge_ratio": 46.01,
+          "vertical_edge_ratio": 35.12,
+          "diagonal_edge_ratio": 18.87
+        }
+      }
+    },
+    {
+      "file": "projets/projet002/Capture d’écran 2026-10-01 à 23.41.26.png",
+      "width": 1365,
+      "height": 904,
+      "aspect_ratio": 1.51,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#FFFFFF",
+          "family": "white",
+          "percentage": 53.37,
+          "variations": 286
+        },
+        {
+          "color": "#000000",
+          "family": "black",
+          "percentage": 5.09,
+          "variations": 23
+        },
+        {
+          "color": "#6C4BF0",
+          "family": "blue",
+          "percentage": 5.8,
+          "variations": 410
+        },
+        {
+          "color": "#6EBCAD",
+          "family": "green",
+          "percentage": 5.91,
+          "variations": 366
+        },
+        {
+          "color": "#294690",
+          "family": "blue",
+          "percentage": 5.58,
+          "variations": 311
+        },
+        {
+          "color": "#F7C5BF",
+          "family": "warm-light",
+          "percentage": 5.49,
+          "variations": 293
+        },
+        {
+          "color": "#FAB95A",
+          "family": "warm-light",
+          "percentage": 5.44,
+          "variations": 311
+        },
+        {
+          "color": "#E54F27",
+          "family": "red-pink",
+          "percentage": 5.67,
+          "variations": 323
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 75.2,
+          "level": "high",
+          "average_brightness": 198.01,
+          "contrast": 100,
+          "color_diversity": 76
+        },
+        "edge_density": {
+          "score": 12.6,
+          "level": "very-low"
+        },
+        "brightness": {
+          "mode": "balanced",
+          "average_rgb": [
+            203.81,
+            192.03,
+            198.28
+          ],
+          "average_brightness": 198.04
+        },
+        "composition": {
+          "whitespace_ratio": 53.27,
+          "dark_area_ratio": 10.82,
+          "visual_center": {
+            "x": 0.746,
+            "y": 0.547
+          },
+          "horizontal_structure": 13.63,
+          "vertical_structure": 11.57,
+          "composition": "asymmetric"
+        },
+        "color_balance": {
+          "warm_ratio": 18.8,
+          "cool_ratio": 20.67,
+          "neutral_ratio": 60.53,
+          "dominant_temperature": "neutral"
+        },
+        "shape": {
+          "geometry": "mixed",
+          "corner_style": "mixed",
+          "rectangularity": 82.38,
+          "roundedness": 39.72,
+          "horizontal_edge_ratio": 36.87,
+          "vertical_edge_ratio": 34.76,
+          "diagonal_edge_ratio": 28.37
+        }
+      }
+    },
+    {
+      "file": "projets/projet002/Capture d’écran 2026-10-01 à 23.41.46.png",
+      "width": 1678,
+      "height": 959,
+      "aspect_ratio": 1.75,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#FFFFFE",
+          "family": "white",
+          "percentage": 62.93,
+          "variations": 569
+        },
+        {
+          "color": "#DFD9FC",
+          "family": "cool-light",
+          "percentage": 3.34,
+          "variations": 564
+        },
+        {
+          "color": "#F9CEC7",
+          "family": "warm-light",
+          "percentage": 5.16,
+          "variations": 138
+        },
+        {
+          "color": "#D3EAE6",
+          "family": "mixed",
+          "percentage": 2.15,
+          "variations": 158
+        },
+        {
+          "color": "#FEE1E0",
+          "family": "warm-light",
+          "percentage": 1.9,
+          "variations": 83
+        },
+        {
+          "color": "#B6D1DA",
+          "family": "cool-light",
+          "percentage": 3.68,
+          "variations": 165
+        },
+        {
+          "color": "#91CBBF",
+          "family": "green",
+          "percentage": 3.41,
+          "variations": 111
+        },
+        {
+          "color": "#A38EF8",
+          "family": "cool-light",
+          "percentage": 2.04,
+          "variations": 209
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 56.91,
+          "level": "medium",
+          "average_brightness": 228.85,
+          "contrast": 82.18,
+          "color_diversity": 38
+        },
+        "edge_density": {
+          "score": 7.97,
+          "level": "very-low"
+        },
+        "brightness": {
+          "mode": "light",
+          "average_rgb": [
+            223.65,
+            224.63,
+            238.44
+          ],
+          "average_brightness": 228.91
+        },
+        "composition": {
+          "whitespace_ratio": 62.57,
+          "dark_area_ratio": 1.62,
+          "visual_center": {
+            "x": 0.528,
+            "y": 0.41
+          },
+          "horizontal_structure": 7.09,
+          "vertical_structure": 8.85,
+          "composition": "asymmetric"
+        },
+        "color_balance": {
+          "warm_ratio": 8.6,
+          "cool_ratio": 29.05,
+          "neutral_ratio": 62.35,
+          "dominant_temperature": "cool"
+        },
+        "shape": {
+          "geometry": "rectangular",
+          "corner_style": "sharp",
+          "rectangularity": 92.88,
+          "roundedness": 26.93,
+          "horizontal_edge_ratio": 51.09,
+          "vertical_edge_ratio": 29.67,
+          "diagonal_edge_ratio": 19.23
+        }
+      }
+    },
+    {
+      "file": "projets/projet002/Capture d’écran 2026-10-01 à 23.42.08.png",
+      "width": 1291,
+      "height": 699,
+      "aspect_ratio": 1.847,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#F5F5F5",
+          "family": "white",
+          "percentage": 89.57,
+          "variations": 442
+        },
+        {
+          "color": "#9296A6",
+          "family": "blue",
+          "percentage": 0.57,
+          "variations": 133
+        },
+        {
+          "color": "#D7DCDB",
+          "family": "gray",
+          "percentage": 1.36,
+          "variations": 337
+        },
+        {
+          "color": "#30365D",
+          "family": "blue",
+          "percentage": 0.81,
+          "variations": 213
+        },
+        {
+          "color": "#666A83",
+          "family": "blue",
+          "percentage": 0.42,
+          "variations": 146
+        },
+        {
+          "color": "#616161",
+          "family": "dark-gray",
+          "percentage": 0.2,
+          "variations": 39
+        },
+        {
+          "color": "#4B5071",
+          "family": "blue",
+          "percentage": 0.22,
+          "variations": 62
+        },
+        {
+          "color": "#6FBA6B",
+          "family": "green",
+          "percentage": 0.37,
+          "variations": 149
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 51.89,
+          "level": "medium",
+          "average_brightness": 235.45,
+          "contrast": 65.15,
+          "color_diversity": 64
+        },
+        "edge_density": {
+          "score": 15.72,
+          "level": "low"
+        },
+        "brightness": {
+          "mode": "light",
+          "average_rgb": [
+            235.01,
+            236.64,
+            234.67
+          ],
+          "average_brightness": 235.44
+        },
+        "composition": {
+          "whitespace_ratio": 88.16,
+          "dark_area_ratio": 0.89,
+          "visual_center": {
+            "x": 0.471,
+            "y": 0.49
+          },
+          "horizontal_structure": 16.22,
+          "vertical_structure": 15.22,
+          "composition": "airy"
+        },
+        "color_balance": {
+          "warm_ratio": 2.88,
+          "cool_ratio": 4.1,
+          "neutral_ratio": 93.02,
+          "dominant_temperature": "neutral"
+        },
+        "shape": {
+          "geometry": "soft-organic",
+          "corner_style": "rounded",
+          "rectangularity": 60.6,
+          "roundedness": 79.22,
+          "horizontal_edge_ratio": 24.56,
+          "vertical_edge_ratio": 28.14,
+          "diagonal_edge_ratio": 47.3
+        }
+      }
+    },
+    {
+      "file": "projets/projet003/Capture d’écran 2026-10-01 à 23.42.27.png",
+      "width": 1097,
+      "height": 890,
+      "aspect_ratio": 1.233,
+      "orientation": "landscape",
+      "dominant_colors": [
+        {
+          "color": "#FDFDFD",
+          "family": "white",
+          "percentage": 5.76,
+          "variations": 659
+        },
+        {
+          "color": "#ACA8A2",
+          "family": "gray",
+          "percentage": 27.3,
+          "variations": 2040
+        },
+        {
+          "color": "#EAEAEA",
+          "family": "light-gray",
+          "percentage": 1.72,
+          "variations": 825
+        },
+        {
+          "color": "#151C14",
+          "family": "black",
+          "percentage": 1.34,
+          "variations": 699
+        },
+        {
+          "color": "#88BAD1",
+          "family": "cool-light",
+          "percentage": 6.59,
+          "variations": 2719
+        },
+        {
+          "color": "#5D90C8",
+          "family": "blue",
+          "percentage": 5.71,
+          "variations": 2914
+        },
+        {
+          "color": "#A0978C",
+          "family": "mixed",
+          "percentage": 2.19,
+          "variations": 1196
+        },
+        {
+          "color": "#759EB4",
+          "family": "blue",
+          "percentage": 3.55,
+          "variations": 1938
+        }
+      ],
+      "visual_analysis": {
+        "density": {
+          "score": 90.8,
+          "level": "very-high",
+          "average_brightness": 146.72,
+          "contrast": 93.67,
+          "color_diversity": 173
+        },
+        "edge_density": {
+          "score": 23.44,
+          "level": "low"
+        },
+        "brightness": {
+          "mode": "balanced",
+          "average_rgb": [
+            147.78,
+            150.63,
+            141.87
+          ],
+          "average_brightness": 146.76
+        },
+        "composition": {
+          "whitespace_ratio": 4.94,
+          "dark_area_ratio": 6.0,
+          "visual_center": {
+            "x": 0.491,
+            "y": 0.485
+          },
+          "horizontal_structure": 23.06,
+          "vertical_structure": 23.82,
+          "composition": "centered"
+        },
+        "color_balance": {
+          "warm_ratio": 30.33,
+          "cool_ratio": 31.03,
+          "neutral_ratio": 38.64,
+          "dominant_temperature": "neutral"
+        },
+        "shape": {
+          "geometry": "mixed",
+          "corner_style": "mixed",
+          "rectangularity": 85.97,
+          "roundedness": 36.16,
+          "horizontal_edge_ratio": 40.1,
+          "vertical_edge_ratio": 34.65,
+          "diagonal_edge_ratio": 25.25
+        }
+      }
+    }
+  ],
+  "analysis": {
+    "total_projects": 7,
+    "last_analysis": "2026-10-02T01:25:23.135157+00:00",
+    "visual_summary": {
+      "orientation_distribution": {
+        "landscape": 7
+      },
+      "brightness_distribution": {
+        "balanced": 4,
+        "dark": 1,
+        "light": 2
+      },
+      "density_distribution": {
+        "very-high": 3,
+        "high": 2,
+        "medium": 2
+      },
+      "average_aspect_ratio": 2.292,
+      "average_density_score": 75.23,
+      "average_edge_density_score": 15.97,
+      "average_brightness": 179.88,
+      "visual_style": {
+        "composition_distribution": {
+          "centered": 2,
+          "asymmetric": 3,
+          "dense": 1,
+          "airy": 1
+        },
+        "temperature_distribution": {
+          "cool": 3,
+          "warm": 1,
+          "neutral": 3
+        },
+        "average_whitespace_ratio": 43.28,
+        "average_dark_area_ratio": 15.35,
+        "average_horizontal_structure": 15.66,
+        "average_vertical_structure": 16.28,
+        "shape": {
+          "geometry_distribution": {
+            "soft-organic": 2,
+            "rectangular": 3,
+            "mixed": 2
+          },
+          "corner_style_distribution": {
+            "mixed": 3,
+            "sharp": 3,
+            "rounded": 1
+          },
+          "average_rectangularity": 82.69,
+          "average_roundedness": 43.13,
+          "preferred_geometry": "rectangular",
+          "preferred_corner_style": "mixed"
+        }
+      }
+    }
+  }
+}
