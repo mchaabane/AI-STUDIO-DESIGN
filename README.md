@@ -1,146 +1,364 @@
-Personal Design AI
+# 🎨 Personal Design AI
 
-Personal Design AI est un atelier de conception web assisté par IA.
+> **Un atelier de conception web assisté par IA locale, conçu pour
+> générer des interfaces qui respectent le langage visuel du designer.**
 
-Le projet transforme une demande en langage naturel en interface web
-HTML/CSS, tout en utilisant une mémoire de design personnelle pour
-conserver une cohérence visuelle.
+Personal Design AI transforme une idée exprimée en langage naturel en
+interface web **HTML/CSS**, tout en s'appuyant sur une **mémoire de
+design personnelle** pour conserver les choix visuels de l'utilisateur.
 
-Stack
+L'objectif n'est pas seulement de générer une page web, mais de
+permettre à l'IA de mieux comprendre progressivement les **couleurs,
+formes, compositions, composants et préférences visuelles** d'un
+designer.
 
-Frontend : React + Vite
+------------------------------------------------------------------------
 
-Backend : Python + FastAPI
+## ✨ À quoi sert le projet ?
 
-IA locale : Ollama + Qwen qwen3:8b
+Le principe est simple :
 
-Mémoire de design : design-library/
+``` text
+💬 Une idée
+   ↓
+🧠 Analyse de la demande
+   ↓
+🎨 Mémoire de design personnelle
+   ↓
+🤖 IA locale
+   ↓
+🛠️ HTML / CSS généré
+   ↓
+👀 Interface prête à visualiser
+```
 
-Projets générés : data/projects/
+Le designer peut ensuite demander des modifications en langage naturel
+et conserver différentes versions de ses projets.
 
-1. Prérequis
+### Exemples
 
-Sur macOS, installer :
+``` text
+Crée une landing page pour un refuge animalier.
+```
 
-Python 3.12+
+``` text
+Ajoute un bouton "Nous contacter".
+```
 
-Node.js + npm
+``` text
+Supprime le menu vertical en double.
+```
 
-Ollama
+``` text
+Ajoute un Scottish Fold dans la liste.
+```
 
-Git (optionnel)
+------------------------------------------------------------------------
+
+## 🧠 Une IA qui apprend le contexte du designer
+
+Le projet utilise une **librairie personnelle de références visuelles**.
+
+``` text
+design-library/
+└── projets/
+    ├── projet001/
+    ├── projet002/
+    └── projet003/
+```
+
+Ces références sont analysées afin de construire un profil de design
+pouvant notamment contenir :
+
+-   🎨 couleurs dominantes
+-   ◼️ formes et compositions
+-   🧩 structures et composants récurrents
+-   📐 proportions
+-   🌗 luminosité et densité visuelle
+-   ✨ caractéristiques générales du style
+
+Ces informations servent ensuite à enrichir le contexte transmis au
+modèle.
+
+> **L'objectif est de passer d'une IA qui génère un design générique à
+> une IA qui comprend progressivement les préférences de son
+> utilisateur.**
+
+------------------------------------------------------------------------
+
+# 🏗️ Architecture
+
+``` text
+                    👤 UTILISATEUR
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │    FRONTEND     │
+                 │   React / Vite  │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │     BACKEND     │
+                 │     FastAPI     │
+                 └───────┬─────────┘
+                        /                        /                         ▼     ▼
+             ┌──────────┐ ┌──────────────┐
+             │ Mémoire  │ │ Ollama + Qwen│
+             │  Design  │ │   IA locale  │
+             └────┬─────┘ └──────┬───────┘
+                  └────────┬──────┘
+                           ▼
+                    ┌─────────────┐
+                    │  HTML / CSS │
+                    │  Validation │
+                    └──────┬──────┘
+                           ▼
+                    ┌─────────────┐
+                    │ Projet Web  │
+                    │ + versions  │
+                    └─────────────┘
+```
+
+------------------------------------------------------------------------
+
+# 🛠️ Technologies
+
+  Technologie                   Utilisation
+  ----------------------------- -------------------------------------------------
+  **Python**                    Backend et logique applicative
+  **FastAPI**                   API et orchestration
+  **React**                     Interface utilisateur
+  **Vite**                      Environnement frontend
+  **Ollama**                    Exécution locale du modèle
+  **Qwen 3 8B**                 Modèle de langage
+  **RAG / mémoire de design**   Contextualisation des générations
+  **HTML / CSS**                Interfaces générées
+  **HTTPX**                     Communication HTTP et validation des ressources
+
+------------------------------------------------------------------------
+
+# 📁 Structure du projet
+
+``` text
+design-ai-mvp/
+│
+├── backend/
+│   └── app/
+│       ├── main.py
+│       ├── models.py
+│       ├── storage.py
+│       ├── ollama.py
+│       ├── intelligence.py
+│       ├── reasoner.py
+│       ├── change_planner.py
+│       ├── css_patcher.py
+│       ├── design_analyzer.py
+│       ├── design_memory.py
+│       └── api/
+│           ├── projects.py
+│           └── generation.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── src/
+│       ├── main.jsx
+│       ├── App.jsx
+│       └── styles.css
+│
+├── design-library/
+│   ├── design-profile.json
+│   └── projets/
+│
+├── data/
+│   └── projects/
+│
+└── README.md
+```
+
+------------------------------------------------------------------------
+
+# 🚀 Installation
+
+## 1. Prérequis
+
+Le projet est actuellement prévu pour une utilisation locale sur macOS.
+
+Installer :
+
+-   Python **3.12+**
+-   Node.js + npm
+-   Ollama
+-   Git *(optionnel)*
 
 Vérifier :
 
+### Dossier : peu importe
+
+``` bash
 python3 --version
 node --version
 npm --version
 ollama --version
+```
 
-2. Copier les fichiers du projet
+------------------------------------------------------------------------
 
-Copier le projet dans un dossier local, par exemple :
+## 2. Installer le backend
 
-/Users/chaabane/design-ai-mvp
+### Dossier : `/Users/chaabane/design-ai-mvp`
 
-Structure attendue :
+Créer l'environnement virtuel :
 
-design-ai-mvp/
-├── backend/
-│   └── app/
-├── frontend/
-│   ├── package.json
-│   ├── vite.config.js
-│   └── src/
-├── design-library/
-│   ├── design-profile.json
-│   └── projets/
-├── data/
-└── .venv/
-
-Le dossier .venv peut être recréé s'il n'est pas fourni.
-
-3. Installer le backend Python
-
-Dossier : /Users/chaabane/design-ai-mvp
-
+``` bash
 python3 -m venv .venv
+```
+
+Activer l'environnement :
+
+``` bash
 source .venv/bin/activate
+```
+
+Mettre pip à jour :
+
+``` bash
 python -m pip install --upgrade pip
+```
+
+Installer les dépendances :
+
+``` bash
 pip install fastapi uvicorn httpx pydantic
+```
 
-Si un requirements.txt est fourni par le projet, utiliser plutôt :
+Si un `requirements.txt` est fourni :
 
+``` bash
 pip install -r requirements.txt
+```
 
-Tester :
+Vérifier :
 
+``` bash
 python -c "import fastapi, httpx, pydantic; print('Backend OK')"
+```
 
-4. Installer le frontend
+------------------------------------------------------------------------
 
-Dossier : /Users/chaabane/design-ai-mvp/frontend
+# 💻 Installation du frontend
 
+### Dossier : `/Users/chaabane/design-ai-mvp/frontend`
+
+``` bash
 npm install
+```
 
-5. Installer et préparer Ollama
+------------------------------------------------------------------------
 
-Dossier : peu importe
+# 🤖 Installer Ollama
 
+Personal Design AI utilise Ollama pour exécuter le modèle localement.
+
+### Dossier : peu importe
+
+``` bash
 ollama --version
+```
+
+Télécharger le modèle :
+
+``` bash
 ollama pull qwen3:8b
+```
+
+Vérifier :
+
+``` bash
 ollama list
+```
 
-Le modèle attendu est :
+Le modèle attendu :
 
+``` text
 qwen3:8b
+```
 
 Ollama utilise normalement :
 
+``` text
 http://127.0.0.1:11434
+```
 
-La configuration du modèle se trouve dans :
+------------------------------------------------------------------------
 
-backend/app/ollama.py
+# 🎨 Préparer la mémoire de design
 
-6. Préparer la mémoire de design
+Ajouter les références visuelles dans :
 
-Ajouter les captures de référence dans :
-
+``` text
 design-library/projets/
+```
 
-Exemple :
+Par exemple :
 
+``` text
 design-library/
 └── projets/
     ├── projet001/
     │   ├── reference-01.png
-    │   └── reference-02.png
+    │   ├── reference-02.png
+    │   └── reference-03.png
+    │
     ├── projet002/
+    │   └── ...
+    │
     └── projet003/
+        └── ...
+```
 
-Ces références servent à analyser notamment les couleurs, la luminosité,
-la densité, la composition et les caractéristiques visuelles du style.
+Les références servent à construire le profil visuel utilisé par les
+générations.
 
-7. Analyser les références
+------------------------------------------------------------------------
 
-Dossier : /Users/chaabane/design-ai-mvp
+# 🔍 Analyser les références
 
+### Dossier : `/Users/chaabane/design-ai-mvp`
+
+Activer l'environnement :
+
+``` bash
 source .venv/bin/activate
+```
+
+Puis lancer l'analyse :
+
+``` bash
 python3 -c "from backend.app.design_analyzer import analyze_design_library; print(analyze_design_library())"
+```
 
-Vérifier ensuite le profil :
+Vérifier le profil :
 
+``` bash
 python3 -c "from backend.app.generator import load_design_profile; p=load_design_profile(); print('Profil chargé :', bool(p)); print('Projets analysés :', p.get('analysis', {}).get('total_projects'))"
+```
 
-Pour afficher le contexte envoyé au moteur de génération :
+Afficher le contexte de design :
 
+``` bash
 python3 -c "from backend.app.generator import load_design_profile, build_design_memory_context; p=load_design_profile(); print(build_design_memory_context(p))"
+```
 
-8. Vérifier la syntaxe Python
+------------------------------------------------------------------------
 
-Dossier : /Users/chaabane/design-ai-mvp
+# ✅ Vérifier le backend
 
+### Dossier : `/Users/chaabane/design-ai-mvp`
+
+``` bash
 python3 -m py_compile backend/app/main.py
 python3 -m py_compile backend/app/ollama.py
 python3 -m py_compile backend/app/intelligence.py
@@ -150,46 +368,64 @@ python3 -m py_compile backend/app/design_analyzer.py
 python3 -m py_compile backend/app/design_memory.py
 python3 -m py_compile backend/app/api/projects.py
 python3 -m py_compile backend/app/api/generation.py
+```
 
-Aucune sortie signifie normalement qu'il n'y a pas d'erreur de syntaxe.
+Aucune sortie signifie normalement que la syntaxe est correcte.
 
-9. Démarrer le projet
+------------------------------------------------------------------------
 
-Terminal 1 --- Ollama
+# ▶️ Lancer l'application
 
-Dossier : peu importe
+Pour une utilisation quotidienne, ouvrir **3 terminaux**.
 
+## Terminal 1 --- Ollama
+
+### Dossier : peu importe
+
+``` bash
 ollama serve
+```
 
-Terminal 2 --- Backend
+------------------------------------------------------------------------
 
-Dossier : /Users/chaabane/design-ai-mvp
+## Terminal 2 --- Backend
 
+### Dossier : `/Users/chaabane/design-ai-mvp`
+
+``` bash
 source .venv/bin/activate
 uvicorn backend.app.main:app --reload
+```
 
 Backend :
 
-http://127.0.0.1:8000
+**http://127.0.0.1:8000**
 
 Documentation API :
 
-http://127.0.0.1:8000/docs
+**http://127.0.0.1:8000/docs**
 
-Terminal 3 --- Frontend
+------------------------------------------------------------------------
 
-Dossier : /Users/chaabane/design-ai-mvp/frontend
+## Terminal 3 --- Frontend
 
+### Dossier : `/Users/chaabane/design-ai-mvp/frontend`
+
+``` bash
 npm run dev
+```
 
 Frontend :
 
-http://localhost:5173
+**http://localhost:5173**
 
-10. Premier test
+------------------------------------------------------------------------
+
+# 🧪 Premier test
 
 Dans l'interface, essayer :
 
+``` text
 Crée une landing page moderne pour un refuge animalier.
 
 Ajoute un grand titre "Adoptez votre compagnon",
@@ -199,72 +435,68 @@ Ajoute une grille de cartes avec des photos réalistes
 d'animaux correspondant exactement à leur nom.
 
 Respecte le style visuel de mes références de design.
+```
 
-Flux de génération :
+------------------------------------------------------------------------
 
-Prompt utilisateur
-        ↓
-Frontend React
-        ↓
-Backend FastAPI
-        ↓
-Analyse de la demande
-        ↓
-Mémoire de design
-        ↓
-Prompt enrichi
-        ↓
-Ollama + Qwen
-        ↓
-HTML / CSS
-        ↓
-Validation / réparation
-        ↓
-Images sémantiques
-        ↓
-Projet généré
+# 🖼️ Gestion des images
 
-11. Modifier un projet
+Lorsqu'une génération nécessite des images, le système :
 
-Le système accepte également des modifications en langage naturel :
+``` text
+Sujet demandé
+     ↓
+Recherche sémantique
+     ↓
+Vérification de l'URL
+     ↓
+Image valide
+     ↓
+Intégration dans le HTML
+```
 
+Si aucune image distante valide n'est disponible, un **fallback local**
+est utilisé afin d'éviter les images cassées.
+
+------------------------------------------------------------------------
+
+# 🔄 Modifier un projet
+
+Les modifications peuvent également être demandées en langage naturel.
+
+Par exemple :
+
+``` text
 Ajoute un bouton "Nous contacter".
+```
 
+``` text
 Ajoute un Scottish Fold dans la liste.
+```
 
+``` text
 Supprime le menu vertical en double.
+```
 
+``` text
 Change le titre principal.
+```
 
-Le backend analyse la demande et applique les changements au projet et à
-sa version.
+Le système analyse la demande puis applique les changements au projet.
 
-12. Gestion des images
+------------------------------------------------------------------------
 
-Lorsqu'une demande nécessite des photos, le système :
+# 📦 Projets et versions
 
-identifie le sujet demandé ;
+Les projets sont conservés dans :
 
-recherche une image correspondant au sujet ;
-
-vérifie que l'URL répond réellement ;
-
-conserve uniquement une image valide ;
-
-utilise un fallback si aucune image distante valide n'est
-disponible.
-
-Cela évite de laisser des URLs d'images cassées dans les projets
-générés.
-
-13. Projets et versions
-
-Les projets sont enregistrés dans :
-
+``` text
 data/projects/
+```
 
-Chaque projet peut conserver plusieurs versions :
+Exemple :
 
+``` text
 data/projects/
 └── project_xxxxx/
     ├── version-1/
@@ -272,127 +504,156 @@ data/projects/
     ├── version-2/
     │   └── index.html
     └── ...
+```
 
-14. Mettre à jour la mémoire de design
+Cela permet de conserver l'historique des générations et modifications.
+
+------------------------------------------------------------------------
+
+# ♻️ Mettre à jour la mémoire de design
 
 Après avoir ajouté de nouvelles références :
 
-Dossier : /Users/chaabane/design-ai-mvp
+### Dossier : `/Users/chaabane/design-ai-mvp`
 
+``` bash
 source .venv/bin/activate
 python3 -c "from backend.app.design_analyzer import analyze_design_library; print(analyze_design_library())"
-
-Puis vérifier :
-
-python3 -c "from backend.app.generator import load_design_profile; p=load_design_profile(); print('Profil chargé :', bool(p)); print('Projets analysés :', p.get('analysis', {}).get('total_projects'))"
-
-Les générations suivantes utiliseront le profil mis à jour.
-
-15. Dépannage
-
-« Impossible de contacter le backend »
-
-Vérifier que le backend est lancé :
-
-Dossier : /Users/chaabane/design-ai-mvp
-
-source .venv/bin/activate
-uvicorn backend.app.main:app --reload
-
-Ollama ne répond pas
-
-Dossier : peu importe
-
-ollama list
-
-Si qwen3:8b manque :
-
-ollama pull qwen3:8b
+```
 
 Puis :
 
-ollama serve
+``` bash
+python3 -c "from backend.app.generator import load_design_profile; p=load_design_profile(); print('Profil chargé :', bool(p)); print('Projets analysés :', p.get('analysis', {}).get('total_projects'))"
+```
 
-Erreur ModuleNotFoundError
+Les prochaines générations utiliseront le profil actualisé.
 
-Réactiver l'environnement :
+------------------------------------------------------------------------
 
-Dossier : /Users/chaabane/design-ai-mvp
+# 🧯 Dépannage
 
+### ❌ « Impossible de contacter le backend »
+
+Vérifier que FastAPI fonctionne.
+
+**Dossier : `/Users/chaabane/design-ai-mvp`**
+
+``` bash
 source .venv/bin/activate
+uvicorn backend.app.main:app --reload
+```
 
-Erreur pendant une génération
+------------------------------------------------------------------------
 
-Regarder les logs du terminal FastAPI. Les messages commençant par
-[GENERATION] permettent notamment de suivre la génération et la
-validation des images.
+### ❌ Ollama ne répond pas
 
-Images cassées
+**Dossier : peu importe**
 
-Vérifier que le backend a été redémarré après une modification de
-generation.py.
+``` bash
+ollama list
+```
 
-16. Arrêter les services
+Si `qwen3:8b` n'est pas présent :
+
+``` bash
+ollama pull qwen3:8b
+```
+
+Puis :
+
+``` bash
+ollama serve
+```
+
+------------------------------------------------------------------------
+
+### ❌ `ModuleNotFoundError`
+
+Vérifier que l'environnement virtuel est actif :
+
+**Dossier : `/Users/chaabane/design-ai-mvp`**
+
+``` bash
+source .venv/bin/activate
+```
+
+------------------------------------------------------------------------
+
+### ❌ Erreur pendant une génération
+
+Regarder les logs du terminal FastAPI.
+
+Les messages commençant par :
+
+``` text
+[GENERATION]
+```
+
+permettent de suivre les différentes étapes de génération et de
+validation.
+
+------------------------------------------------------------------------
+
+### ❌ Images cassées
+
+Après une modification de `generation.py`, redémarrer le backend.
+
+Vérifier également les logs liés à la recherche et à la validation des
+images.
+
+------------------------------------------------------------------------
+
+# 🛑 Arrêter l'application
 
 Dans chaque terminal :
 
+``` text
 Ctrl + C
+```
 
-17. Démarrage quotidien
+------------------------------------------------------------------------
 
-Après l'installation initiale :
+# ⚡ Démarrage rapide
 
-Terminal 1 --- Dossier : peu importe
+Une fois l'installation terminée :
 
+### Terminal 1
+
+**Dossier : peu importe**
+
+``` bash
 ollama serve
+```
 
-Terminal 2 --- Dossier : /Users/chaabane/design-ai-mvp
+### Terminal 2
 
+**Dossier : `/Users/chaabane/design-ai-mvp`**
+
+``` bash
 source .venv/bin/activate
 uvicorn backend.app.main:app --reload
+```
 
-Terminal 3 --- Dossier : /Users/chaabane/design-ai-mvp/frontend
+### Terminal 3
 
+**Dossier : `/Users/chaabane/design-ai-mvp/frontend`**
+
+``` bash
 npm run dev
+```
 
 Puis ouvrir :
 
-http://localhost:5173
+**http://localhost:5173**
 
-18. Architecture
+------------------------------------------------------------------------
 
-                 UTILISATEUR
-                      ↓
-              ┌───────────────┐
-              │    FRONTEND   │
-              │  React / Vite │
-              └───────┬───────┘
-                      ↓
-              ┌───────────────┐
-              │    BACKEND    │
-              │    FastAPI    │
-              └───────┬───────┘
-                     /                     /                      ↓     ↓
-          ┌──────────┐  ┌─────────────┐
-          │ Mémoire  │  │ Ollama/Qwen │
-          │  design  │  │     IA      │
-          └────┬─────┘  └──────┬──────┘
-               └────────┬───────┘
-                        ↓
-                 ┌─────────────┐
-                 │ HTML / CSS  │
-                 │ validation  │
-                 └──────┬──────┘
-                        ↓
-                 ┌─────────────┐
-                 │ Projet Web  │
-                 │ + versions  │
-                 └─────────────┘
+# 🗺️ Roadmap
 
-19. Vision
+Le projet suit progressivement cette évolution :
 
-Le projet évolue progressivement selon cette logique :
-
+``` text
 Génération de sites
         ↓
 Mémoire de design
@@ -404,7 +665,35 @@ Mémoire contextuelle
 RAG de design
         ↓
 Assistant personnel de conception
+```
 
-L'objectif est de passer d'un simple générateur de sites à un véritable
-atelier de conception capable de comprendre les références visuelles et
-les habitudes de design de son utilisateur.
+L'objectif final est de construire un **véritable atelier de conception
+assisté par IA**, capable de comprendre le contexte, les références et
+les préférences visuelles de son utilisateur.
+
+------------------------------------------------------------------------
+
+# 💡 Philosophie du projet
+
+> **L'IA ne doit pas seulement générer une interface. Elle doit
+> apprendre à comprendre la manière dont le designer conçoit.**
+
+Personal Design AI cherche ainsi à rapprocher **IA générative + design
+system + mémoire utilisateur + prototypage rapide**, avec une approche
+locale et contrôlable.
+
+------------------------------------------------------------------------
+
+## 👋 Contribution & échanges
+
+Le projet est avant tout un terrain d'expérimentation autour de :
+
+-   IA locale
+-   LLM
+-   RAG
+-   mémoire utilisateur
+-   design génératif
+-   automatisation du prototypage
+-   personnalisation des modèles
+
+Les retours, idées et discussions techniques sont les bienvenus.
