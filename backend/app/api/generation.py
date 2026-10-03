@@ -1790,13 +1790,90 @@ def _is_explicit_visual_prompt(prompt: str) -> bool:
     )
 
 
+def _animal_image_library(prompt: str, subject: str) -> list[str]:
+    """Retourne une bibliothèque photo déterministe pour les animaux.
+
+    Pour les animaux, on ne passe volontairement pas par une recherche
+    textuelle libre : un prénom comme "Tom" ou "Buddy" ne doit jamais
+    devenir une requête d'image ambiguë.
+    """
+    normalized_prompt = normalize_label(prompt)
+    normalized_subject = normalize_label(subject)
+    context = f"{normalized_subject} {normalized_prompt}"
+
+    if re.search(
+        r"\b(scottish fold|chat|chats|chaton|chatons|cat|cats|kitten|kittens|"
+        r"feline|felin|félin|felins|félin)\b",
+        context,
+    ):
+        return [
+            "https://images.unsplash.com/photo-1725454704851-f2ba0e9ab5b2?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1778437968220-67c986897890?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1673694411726-e22e30d9e17c?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1750758142450-b8c3b909bf78?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1759568572636-4440ea8f2521?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1765180850180-f7cfb26fb7f1?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=1200&q=80",
+            "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=1200&q=80",
+            "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=1200&q=80",
+            "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=1200&q=80",
+            "https://images.unsplash.com/photo-1561948955-570b270e7c36?w=1200&q=80",
+        ]
+
+    if re.search(
+        r"\b(golden retriever|husky|shiba inu|chien|chiens|chienne|dog|dogs|"
+        r"puppy|puppies|chiot|chiots|canine)\b",
+        context,
+    ):
+        return [
+            "https://images.unsplash.com/photo-1552053831-71594a27632d?w=1200&q=80",
+            "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1200&q=80",
+            "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=1200&q=80",
+            "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=1200&q=80",
+            "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1200&q=80",
+        ]
+
+    if re.search(
+        r"\b(lapin|lapins|lapine|rabbit|rabbits|bunny|bunnies)\b",
+        context,
+    ):
+        return [
+            "https://images.unsplash.com/photo-1750207301348-fd1fc9650ab5?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1768750126576-86b486d9ba78?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+            "https://images.unsplash.com/photo-1759687084356-4eab803699df?auto=format&fit=crop&fm=jpg&q=80&w=1200",
+        ]
+
+    return []
+
+
 async def _resolve_semantic_image_url(
     subject: str,
     index: int,
     prompt: str,
 ) -> str:
-    url = await _fetch_wikimedia_image_url(subject, prompt)
+    """Résout une image sans laisser un nom propre déclencher une recherche ambiguë."""
+    animal_library = _animal_image_library(prompt, subject)
 
+    if animal_library:
+        candidate = animal_library[index % len(animal_library)]
+        validated = await _validated_image_url(candidate)
+        if validated:
+            return validated
+
+        # Si une URL de la bibliothèque devient indisponible, on essaie
+        # les autres images de la même catégorie avant le placeholder.
+        for offset in range(1, len(animal_library)):
+            candidate = animal_library[(index + offset) % len(animal_library)]
+            validated = await _validated_image_url(candidate)
+            if validated:
+                return validated
+
+        return _semantic_image_fallback(
+            subject or _fallback_image_topic(prompt)
+        )
+
+    # Pour les sujets non animaliers, on conserve la recherche Wikimedia.
+    url = await _fetch_wikimedia_image_url(subject, prompt)
     if url:
         return url
 
@@ -1920,8 +1997,15 @@ async def repair_image_sources(
     prompt: str = "",
 ) -> str:
     """
-    Vérifie les images du HTML final.
-    Une URL distante cassée n'est jamais conservée.
+    Vérifie et normalise les images du HTML final.
+
+    Règle importante pour les listes d'animaux :
+    - chaque carte reçoit une photo différente ;
+    - l'ordre des photos suit l'ordre des balises <img> ;
+    - on ne conserve pas une URL distante générée par le modèle si le prompt
+      demande explicitement des visuels animaliers ;
+    - si la bibliothèque contient moins de photos que de cartes, on préfère
+      un placeholder unique plutôt que de réutiliser une photo.
     """
     image_pattern = re.compile(
         r"<img(?P<before>[^>]*?)"
@@ -1936,8 +2020,10 @@ async def repair_image_sources(
         return html
 
     strict_subject = _is_explicit_visual_prompt(prompt)
-    subjects = []
+    animal_library = _animal_image_library(prompt, "") if strict_subject else []
+    is_animal_prompt = bool(animal_library)
 
+    subjects = []
     for match in matches:
         before = html[max(0, match.start() - 900):match.start()]
         subjects.append(
@@ -1951,7 +2037,7 @@ async def repair_image_sources(
     unique_subjects = list(dict.fromkeys(subjects))
     resolved_urls = {}
 
-    if strict_subject and unique_subjects:
+    if strict_subject and unique_subjects and not is_animal_prompt:
         resolved = await asyncio.gather(
             *[
                 _resolve_semantic_image_url(subject, index, prompt)
@@ -1970,37 +2056,66 @@ async def repair_image_sources(
             f"{len(unique_subjects)} sujet(s)"
         )
 
+    # Pour les animaux, on attribue les photos par position dans la liste.
+    # On garde la trace des URLs déjà utilisées afin de garantir l'unicité.
+    assigned_animal_urls: list[str] = []
+    if is_animal_prompt:
+        for candidate in animal_library:
+            if candidate in assigned_animal_urls:
+                continue
+            if await _is_image_url_usable(candidate):
+                assigned_animal_urls.append(candidate)
+
+        print(
+            f"[GENERATION] Bibliothèque animale unique: "
+            f"{len(assigned_animal_urls)} photo(s) disponible(s) pour "
+            f"{len(matches)} image(s)"
+        )
+
     pieces = []
     cursor = 0
+    animal_index = 0
 
     for match, subject in zip(matches, subjects):
         pieces.append(html[cursor:match.start()])
         original = match.group(0)
         src = match.group("src").strip()
 
-        if src.lower().startswith(("data:image/", "blob:")):
-            pieces.append(original)
-            cursor = match.end()
-            continue
-
-        usable = False
-        if src.startswith(("http://", "https://")):
-            usable = await _is_image_url_usable(src)
-
-        if usable:
+        if src.lower().startswith(("data:image/", "blob:")) and not is_animal_prompt:
             pieces.append(original)
             cursor = match.end()
             continue
 
         replacement_url = None
 
-        if strict_subject:
-            replacement_url = resolved_urls.get(subject)
+        if is_animal_prompt:
+            if animal_index < len(assigned_animal_urls):
+                replacement_url = assigned_animal_urls[animal_index]
+                animal_index += 1
+            else:
+                # Pas de doublon : si la bibliothèque est épuisée, on génère
+                # un placeholder plutôt que de réutiliser une photo.
+                replacement_url = _semantic_image_fallback(
+                    subject or f"Image animale {animal_index + 1}"
+                )
+                animal_index += 1
+        else:
+            usable = False
+            if src.startswith(("http://", "https://")):
+                usable = await _is_image_url_usable(src)
 
-        if not replacement_url:
-            replacement_url = _semantic_image_fallback(
-                subject or _fallback_image_topic(prompt)
-            )
+            if usable:
+                pieces.append(original)
+                cursor = match.end()
+                continue
+
+            if strict_subject:
+                replacement_url = resolved_urls.get(subject)
+
+            if not replacement_url:
+                replacement_url = _semantic_image_fallback(
+                    subject or _fallback_image_topic(prompt)
+                )
 
         pieces.append(
             "<img"
