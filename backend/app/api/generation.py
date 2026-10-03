@@ -1445,6 +1445,10 @@ NAVIGATION ET INTERACTIONS :
 - Ajoute un état actif au lien correspondant à la section visible.
 - Utilise IntersectionObserver pour détecter la section active.
 - Si le menu possède une version mobile, ajoute un bouton de menu fonctionnel avec ouverture et fermeture réelle.
+- Sur Desktop, la navigation principale doit être horizontale : les liens du menu doivent être alignés sur une seule ligne.
+- Ne mets jamais la navigation principale en colonne sur Desktop.
+- La navigation Desktop ne doit jamais recouvrir le hero ou pousser anormalement le contenu.
+- Sur Mobile uniquement, le menu peut devenir vertical lorsqu'il est ouvert.
 - Les boutons doivent toujours avoir une action réelle.
 - Les modales doivent pouvoir être ouvertes et fermées.
 - Les formulaires doivent gérer leur soumission sans rechargement.
@@ -1948,9 +1952,110 @@ async def repair_generated_html(
     result = ensure_top_anchor(result)
     result = await repair_image_sources(result, prompt=prompt)
     result = repair_navigation_links(result)
+    result = enforce_navigation_layout(result)
     result = inject_navigation_script(result)
 
     return result
+
+
+def enforce_navigation_layout(
+    html: str,
+) -> str:
+    """
+    Garantit une navigation principale horizontale sur Desktop.
+
+    Le modèle peut parfois générer un .nav-links en colonne ou en
+    position absolute même lorsque la page demande une navigation
+    Desktop classique. Cette fonction ajoute un garde-fou CSS
+    déterministe après la génération.
+
+    Sur Mobile, le comportement vertical du menu reste autorisé.
+    """
+    if not re.search(r"<nav\b", html, re.IGNORECASE):
+        return html
+
+    has_nav_links = bool(
+        re.search(
+            r'class\s*=\s*["\'][^"\']*\bnav-links\b[^"\']*["\']',
+            html,
+            re.IGNORECASE,
+        )
+    )
+
+    if not has_nav_links:
+        return html
+
+    override = """
+<style id="personal-design-ai-navigation-fix">
+/* Personal Design AI — navigation layout safeguard */
+nav {
+    position: relative;
+    z-index: 1000;
+}
+
+nav .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: static;
+    width: auto;
+    box-sizing: border-box;
+}
+
+nav .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Mobile uniquement : le menu peut devenir vertical et se replier. */
+@media (max-width: 768px) {
+    nav .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    nav .nav-links.active {
+        display: flex;
+    }
+
+    nav .nav-links a {
+        display: block;
+        width: auto;
+    }
+}
+</style>
+"""
+
+    if 'id="personal-design-ai-navigation-fix"' in html:
+        return html
+
+    body_close = re.search(
+        r"</body\s*>",
+        html,
+        re.IGNORECASE,
+    )
+
+    if body_close:
+        return (
+            html[:body_close.start()]
+            + override
+            + "\n"
+            + html[body_close.start():]
+        )
+
+    return html + "\n" + override
 
 
 def ensure_top_anchor(
